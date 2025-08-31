@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 
-const API_BASE_URL = "https://api.sws.speechify.com";
-const API_KEY = "placeholder";
+const API_BASE_URL = process.env.SPECCHIFY_API_BASE_URL;
+const API_KEY = process.env.SPEECHIFY_API_KEY;
 
 async function createVoice(name, filePath) {
   const sampleFile = await fs.readFile(filePath);

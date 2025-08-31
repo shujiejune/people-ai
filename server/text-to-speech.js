@@ -1,8 +1,8 @@
 import fs from "node:fs/promises";
 
-const API_BASE_URL = "https://api.sws.speechify.com";
-const API_KEY = "placeholder";
-const VOICE_ID = "my_speechify_voice_id";
+const API_BASE_URL = process.env.SPEECHIFY_API_BASE_URL;
+const API_KEY = process.env.SPEECHIFY_API_KEY;
+const VOICE_ID = process.env_SPEECHIFY_VOICE_ID;
 
 async function getAudio(text) {
   const res = await fetch(`${API_BASE_URL}/v1/audio/speech`, {
