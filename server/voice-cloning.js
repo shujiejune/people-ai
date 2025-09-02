@@ -34,7 +34,7 @@ async function createVoice(name, filePath) {
 }
 
 async function main() {
-  const voiceData = await createVoice("my_voice", "voices/English - voice cloning.mp4");
+  const voiceData = await createVoice("spongebob_voice", "voices/spongebob.mp4");
   console.log(voiceData.id);
 }
 

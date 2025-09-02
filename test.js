@@ -3,14 +3,27 @@ import { check } from "k6";
 
 // Test configuration
 export const options = {
-  vus: 10, // 10 virtual users
-  duration: "30s", // Test duration
+  scenarios: {
+    chat_endpoint_test: {
+      executor: "constant-vus", //Type of load
+      exec: "chatTest", // The function to execute for this scenario
+      vus: 7, // 7 virtual users dedicated to this scenario
+      duration: "30s",
+    },
+    tts_endpoint_test: {
+      executor: "constant-vus",
+      exec: "ttsTest",
+      vus: 3,
+      duration: "30s",
+    },
+  },
 };
 
-// The code that will be executed by each virtual user
-export default function main_test() {
-  const res = http.get("http://localhost:3000/api/your-endpoint");
-  check(res, {
-    "status is 200": (r) => r.status === 200,
-  });
+export function chatTest() {
+  const res = http.get("http://localhost:5001/chat?question=hello");
+  check(res, { "chat status is 200": (r) => r.status === 200 });
 }
+
+export function ttsTest() {
+  const res = http.get("http://localhost:5001/tts?word=testing");
+  check(res, { "tts status is 200": (r) => r.status === 200 });
