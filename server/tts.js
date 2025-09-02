@@ -1,6 +1,6 @@
 const API_BASE_URL = process.env.SPEECHIFY_API_BASE_URL;
 const API_KEY = process.env.SPEECHIFY_API_KEY;
-const VOICE_ID = process.env_SPEECHIFY_VOICE_ID;
+const VOICE_ID = process.env.SPEECHIFY_VOICE_ID;
 
 async function tts(text) {
   const res = await fetch(`${API_BASE_URL}/v1/audio/speech`, {
