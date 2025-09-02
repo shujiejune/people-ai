@@ -27,3 +27,4 @@ export function chatTest() {
 export function ttsTest() {
   const res = http.get("http://localhost:5001/tts?word=testing");
   check(res, { "tts status is 200": (r) => r.status === 200 });
+}
