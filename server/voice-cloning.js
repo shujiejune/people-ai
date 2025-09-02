@@ -1,6 +1,9 @@
 import fs from "node:fs/promises";
+import dotenv from "dotenv";
 
-const API_BASE_URL = process.env.SPECCHIFY_API_BASE_URL;
+dotenv.config();
+
+const API_BASE_URL = process.env.SPEECHIFY_API_BASE_URL;
 const API_KEY = process.env.SPEECHIFY_API_KEY;
 
 async function createVoice(name, filePath) {

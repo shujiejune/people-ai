@@ -57,11 +57,12 @@ const RenderQA = (props) => {
 
   const handleTextToSpeech = async (words) => {
     try {
-      const response = await axios.get(`${DOMAIN}/tts?words=${words}`);
-      const decodedAudioData = Buffer.from(response?.data?.audio_data, "base64");
+      const response = await axios.get(`${DOMAIN}/tts?words=${words}`, {
+        responseType: "blob",
+      });
 
       // Create a Blob with the correct MIME type
-      const audioBlob = new Blob([decodedAudioData], { type: "audio/mp3" });
+      const audioBlob = response.data;
 
       // Create an object URL from the Blob
       const audioUrl = URL.createObjectURL(audioBlob);
@@ -89,7 +90,7 @@ const RenderQA = (props) => {
                 <>
                   {each.answer}
                   <AudioOutlined
-                    syle={audioIconStyle}
+                    style={audioIconStyle}
                     onClick={() => handleTextToSpeech(each.answer)}
                   />
                 </>

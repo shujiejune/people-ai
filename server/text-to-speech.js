@@ -1,8 +1,11 @@
 import fs from "node:fs/promises";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const API_BASE_URL = process.env.SPEECHIFY_API_BASE_URL;
 const API_KEY = process.env.SPEECHIFY_API_KEY;
-const VOICE_ID = process.env_SPEECHIFY_VOICE_ID;
+const VOICE_ID = process.env.SPEECHIFY_VOICE_ID;
 
 async function getAudio(text) {
   const res = await fetch(`${API_BASE_URL}/v1/audio/speech`, {
@@ -33,7 +36,7 @@ async function main() {
     "You've gotta dance like there's nobody watching, love like you'll never be hurt, sing like it's heaven on earch.",
   );
 
-  await fs.writeFile("./speech.mp3", audio);
+  await fs.writeFile("./speeches/speech.mp3", audio);
 }
 
 main();
