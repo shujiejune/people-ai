@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const llm = new ChatOpenAI({
-  model: "gpt-4o",
+  model: "gpt-5",
   temperature: 1,
   openAIApiKey: process.env.OPEN_API_KEY,
 });
