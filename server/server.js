@@ -32,6 +32,12 @@ app.get("/chat", async (req, res) => {
 const ttsCache = new Map();
 
 app.get("/tts", async (req, res) => {
+  /*
+  // Baseline without in-memory cache
+  const audioData = await tts(req.query.words);
+  res.setHeader("Content-Type", "audio/mpeg");
+  res.send(audioData);
+  */
   try {
     const { words } = req.query;
     if (!words) {

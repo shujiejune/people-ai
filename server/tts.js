@@ -4,7 +4,6 @@ dotenv.config();
 
 const API_BASE_URL = process.env.SPEECHIFY_API_BASE_URL;
 const API_KEY = process.env.SPEECHIFY_API_KEY;
-
 const VOICE_ID = process.env.SPEECHIFY_VOICE_ID;
 
 async function tts(text) {
